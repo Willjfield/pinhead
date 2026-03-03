@@ -6721,8 +6721,8 @@
       },
       {
         "newId": "loaf_of_bread_with_steam",
-        "issue": "3",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "issue": "3"
       },
       {
         "newId": "loaf_of_pan_bread",
@@ -6730,8 +6730,8 @@
       },
       {
         "newId": "loaf_of_pan_bread_with_steam",
-        "issue": "3",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "issue": "3"
       },
       {
         "newId": "station_wagon",
@@ -6781,22 +6781,22 @@
       {
         "newId": "f22_raptor_fighter_jet",
         "src": "americana",
-        "issue": "4",
         "importBy": "@quincylvania",
+        "issue": "4",
         "americana": "poi_military_plane"
       },
       {
         "newId": "hospital_h",
-        "issue": "4",
         "by": "@quincylvania",
+        "issue": "4",
         "americana": "poi_hospital",
         "nps": "hospital"
       },
       {
         "newId": "bus",
         "by": "@quincylvania",
-        "issue": "4",
         "inspo": "bus_with_destination_display",
+        "issue": "4",
         "americana": [
           "poi_bus",
           "poi_bus_circle"
@@ -6805,11 +6805,10 @@
       {
         "newId": "dome_with_flag",
         "by": "@quincylvania",
+        "inspo": "classical_building_with_dome_and_flag",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
-        "inspo": [
-          "classical_building_with_dome_and_flag",
-          "https://raw.githubusercontent.com/osm-americana/openstreetmap-americana/94ec9f740619f3cd09fb0877487fe180df2fe62b/icons/poi_town_hall.svg"
-        ],
         "americana": "poi_town_hall"
       },
       {
@@ -6822,8 +6821,8 @@
       {
         "newId": "memorial_stone",
         "by": "@quincylvania",
-        "issue": "4",
         "inspo": "memorial_stone_with_inscription",
+        "issue": "4",
         "americana": "poi_gravestone"
       },
       {
@@ -6833,16 +6832,16 @@
       },
       {
         "newId": "badge_shield",
-        "issue": "4",
         "src": "americana",
         "importBy": "@quincylvania",
+        "issue": "4",
         "americana": "poi_police_shield"
       },
       {
         "newId": "badge_shield_with_fire",
         "src": "americana",
-        "issue": "4",
         "importBy": "@quincylvania",
+        "issue": "4",
         "americana": "poi_fire_station"
       },
       {
@@ -6856,32 +6855,32 @@
       {
         "newId": "circle_outline_with_star",
         "by": "@quincylvania",
-        "issue": "4",
         "inspo": [
           "circle_outline",
           "star"
         ],
+        "issue": "4",
         "americana": "place_star_in_circle"
       },
       {
         "newId": "cocktail_with_straw",
         "by": "@quincylvania",
-        "issue": "4",
         "inspo": [
           "cocktail",
           "https://raw.githubusercontent.com/osm-americana/openstreetmap-americana/55926e54bb3191d8deb2762283fcc0bc7d7ab0f1/icons/poi_martini_glass.svg"
         ],
+        "issue": "4",
         "americana": "poi_martini_glass"
       },
       {
         "newId": "fork_crossing_knife",
         "by": "@quincylvania",
-        "issue": "4",
         "inspo": [
           "fork",
           "knife",
           "https://raw.githubusercontent.com/osm-americana/openstreetmap-americana/24204851150e10ba7f00bda59ab5702cfe96e77f/icons/poi_restaurant.svg"
         ],
+        "issue": "4",
         "americana": [
           "poi_restaurant",
           "poi_restaurant_circle"
@@ -6890,18 +6889,18 @@
       {
         "newId": "sleepers_in_opposing_bunkbeds",
         "by": "@quincylvania",
-        "issue": "4",
         "inspo": [
           "sleepers_in_bunkbeds",
           "https://raw.githubusercontent.com/osm-americana/openstreetmap-americana/42499fb9a57dae4bf2bdb97050d3067455dd21eb/icons/poi_hostel.svg"
         ],
+        "issue": "4",
         "americana": "poi_hostel"
       },
       {
         "newId": "square_dot",
         "src": "americana",
-        "issue": "4",
         "importBy": "@quincylvania",
+        "issue": "4",
         "americana": [
           "poi_square_dot",
           "poi_pow_generic"
@@ -6910,18 +6909,24 @@
       {
         "newId": "pennant_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_school"
       },
       {
         "newId": "star_and_crescent_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_muslim"
       },
       {
         "newId": "latin_cross_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_christian"
       },
@@ -6933,6 +6938,8 @@
       {
         "newId": "flaming_chalice_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_uu"
       },
@@ -6943,6 +6950,8 @@
       {
         "newId": "star_of_david",
         "by": "@quincylvania",
+        "src": "osmcarto",
+        "importBy": "@quincylvania",
         "osmcarto": "religion/jewish"
       },
       {
@@ -6956,36 +6965,48 @@
       {
         "newId": "star_of_david_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_jewish"
       },
       {
         "newId": "dharma_wheel_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_buddhist"
       },
       {
         "newId": "yin_yang_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_taoist"
       },
       {
         "newId": "torii_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_shinto"
       },
       {
         "newId": "khanda_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_sikh"
       },
       {
         "newId": "om_on_square",
         "by": "@quincylvania",
+        "src": "americana",
+        "importBy": "@quincylvania",
         "issue": "4",
         "americana": "poi_pow_hindu"
       }
@@ -7009,23 +7030,23 @@
       },
       {
         "newId": "terminal_screen_with_greater_than_prompt",
-        "issue": "17",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "issue": "17"
       },
       {
         "newId": "terminal_screen_with_hash_prompt",
-        "issue": "17",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "issue": "17"
       },
       {
         "newId": "terminal_screen_with_dollar_prompt",
-        "issue": "17",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "issue": "17"
       },
       {
         "newId": "terminal_screen_with_percent_prompt",
-        "issue": "17",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "issue": "17"
       },
       {
         "newId": "rss",
@@ -7618,8 +7639,9 @@
       },
       {
         "newId": "waterfall_into_water",
-        "issue": "18",
         "src": "osmcarto",
+        "importBy": "@quincylvania",
+        "issue": "18",
         "nps": "waterfall",
         "opentrailmap": [
           "waterfall",

@@ -7697,6 +7697,18 @@
           "ampersand"
         ],
         "osmcarto": "shop/department_store"
+      },
+      {
+        "newId": "cargobike",
+        "by": "@dschep"
+      },
+      {
+        "newId": "cargobike_on_parking_line",
+        "by": "@dschep"
+      },
+      {
+        "newId": "cargobike_in_parking_structure",
+        "by": "@dschep"
       }
     ]
   }

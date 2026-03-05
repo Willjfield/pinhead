@@ -7786,6 +7786,16 @@
     "date": "2026-03-05",
     "iconChanges": [
       {
+        "newId": "candlepins",
+        "by": "@petercooperjr",
+        "issue": "61"
+      },
+      {
+        "newId": "candlepin_with_ball",
+        "by": "@petercooperjr",
+        "issue": "61"
+      },
+      {
         "newId": "house_with_flag_and_info_i",
         "by": "@dschep",
         "inspo": [

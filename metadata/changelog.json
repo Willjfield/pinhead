@@ -7878,6 +7878,37 @@
         "issue": "52"
       },
       {
+        "newId": "a_frame_tent",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
+        "newId": "a_frame_tents",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
+        "newId": "a_frame_sidewall_tent",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
+        "newId": "a_frame_sidewall_tents",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
+        "newId": "wall_tent",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
+        "oldId": "tents",
+        "newId": "wall_tents",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
         "newId": "mobile_phone_with_keypad_and_antenna_beside_mobile_phone_with_touchscreen_and_antenna",
         "by": "@quincylvania",
         "inspo": [

@@ -56,8 +56,6 @@ function ensureEmptyDir(dir) {
 
 ensureEmptyDir('tmp');
 
-const srciconsIndex = {};
-
 for (const importSource of importSources) {
   const targetDir = `docs/srcicons/${importSource.id}`;
   if (!existsSync(targetDir)) {
@@ -72,7 +70,7 @@ function downloadExternalSourceIcons(importSource, targetDir) {
   const srcDir = join(`tmp/${importSource.id}`, importSource.iconDir);
   execSync(`cp -r "${srcDir}/." "${targetDir}"`);
 
-  srciconsIndex[importSource.id] = {};
+  const srciconsIndex = {};
 
   const ignoreFilesRegex = importSource.ignoreFiles && new RegExp(importSource.ignoreFiles);
   globSync(`${targetDir}/**/*.svg`).forEach(file => {
@@ -83,11 +81,10 @@ function downloadExternalSourceIcons(importSource, targetDir) {
     if (ignoreFilesRegex && ignoreFilesRegex.test(id)) {
       return;
     }
-    srciconsIndex[importSource.id][id] = {};
+    srciconsIndex[id] = {};
   });
+  writeFileSync(targetDir + '/index.json', JSON.stringify(srciconsIndex));
   console.log("Downloaded icons from source: " + importSource.id);
 }
-
-writeFileSync('docs/srcicons/index.json', JSON.stringify(srciconsIndex));
 
 rmSync('tmp', { recursive: true, force: true });

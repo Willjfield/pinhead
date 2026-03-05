@@ -65,8 +65,13 @@
 
     const importSources = await fetch('/external_sources.json')
       .then(result => result.json());
-    const srciconsIndex = await fetch('/srcicons/index.json')
-      .then(result => result.json());
+    const srciconsIndex = {};
+
+    for (const src of importSources) {
+      srciconsIndex[src.id] = await fetch(`/srcicons/${src.id}/index.json`)
+        .then(result => result.json());
+    }
+
     const changelogs = await fetch('/changelog.json')
       .then(result => result.json());
 

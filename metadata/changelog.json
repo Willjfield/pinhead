@@ -7826,6 +7826,31 @@
         "newId": "campsites_tipi_style",
         "by": "@quincylvania",
         "issue": "52"
+      },
+      {
+        "oldId": "venus",
+        "newId": "venus",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "mars",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "venus_mars",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "venus_with_mars",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "double_venus",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "double_mars",
+        "by": "@quincylvania"
       }
     ]
   }

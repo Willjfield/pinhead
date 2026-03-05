@@ -953,8 +953,7 @@
         "opentrailmap": [
           "campground",
           "campsite"
-        ],
-        "osmcarto": "tourism/camping"
+        ]
       },
       {
         "newId": "can",
@@ -7774,6 +7773,35 @@
         "newId": "pixel_anchor",
         "by": "@quincylvania",
         "inspo": "anchor"
+      }
+    ]
+  },
+  {
+    "majorVersion": "11",
+    "date": "2026-03-05",
+    "iconChanges": [
+      {
+        "oldId": "campsite",
+        "newId": "campsite",
+        "by": "@quincylvania",
+        "issue": "53"
+      },
+      {
+        "newId": "campsites",
+        "by": "@quincylvania",
+        "issue": "53",
+        "nps": "campground"
+      },
+      {
+        "newId": "campsite_tipi_style",
+        "by": "@quincylvania",
+        "issue": "52",
+        "osmcarto": "tourism/camping"
+      },
+      {
+        "newId": "campsites_tipi_style",
+        "by": "@quincylvania",
+        "issue": "52"
       }
     ]
   }

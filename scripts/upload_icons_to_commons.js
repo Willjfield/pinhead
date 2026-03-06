@@ -166,6 +166,7 @@ async function uploadFile(iconId, srcdir, svg, cookie, token) {
 
 =={{int:license-header}}==
 {{Pinhead|${iconId}|v=${icon.v}}}
+{{Cc-zero}}
 
 ${categoriesString}`);
 

@@ -138,13 +138,50 @@ async function uploadFile(iconId, srcdir, svg, cookie, token) {
     })
   );
 
-  const categories = [];
+  let categories = [];
   if (bys.includes('@quincylvania')) {
     categories.push('Pinhead icons by Quincy Morgan');
   }
-  if (srcdir && srcdir.includes('pixel_style')) {
-    categories.push('One-color SVG pixel art (black)');
+  const dirs = srcdir ? srcdir.split('/') : [];
+
+  const catsForDir = {
+    aircraft: ['Plain black SVG aircraft icons'],
+    animals: ['Black SVG animal icons'],
+    arrows: ['Black SVG arrow icons'],
+    bicycles: ['Plain black SVG bicycle icons'],
+    briefcases: ['Briefcase icons'],
+    buildings: ['Plain black SVG building icons'],
+    buses: ['Plain black SVG bus icons'],
+    campsite_symbols: ['Tent icons'],
+    cars: ['Plain black SVG automobile icons'],
+    currency_symbols: ['Currency icons'],
+    electrical_diagram_symbols: ['SVG electrical symbols'],
+    food_and_drink: ['Plain black SVG food and drink icons'],
+    hand_tools: ['Plain black SVG tool icons'],
+    hearts: ['Plain black SVG heart icons'],
+    japanese_map_symbols: ['SVG map symbols of Japan'],
+    landforms: ['SVG nature icons'],
+    manhole_covers: ['Manhole covers'],
+    mobile_phones: ['Plain black SVG telephone icons'],
+    motorcycles: ['Plain black SVG motorcycle icons'],
+    people: ['Plain black SVG people icons'],
+    phones: ['Plain black SVG telephone icons'],
+    pixel_style: ['One-color SVG pixel art (black)'],
+    plants: ['Plain black SVG plant icons'],
+    religious: ['Plain black SVG religious computer icons'],
+    tents: ['Tent icons'],
+    towers_poles_masts: ['Tower icons'],
+    trains: ['Plain black SVG train icons'],
+    trucks: ['Plain black SVG truck icons'],
+    watercraft: ['Plain black SVG watercraft icons'],
+  };
+
+  for (const dir in catsForDir) {
+    if (dirs.includes(dir)) {
+      categories = categories.concat(catsForDir[dir]);
+    }
   }
+  
   const categoriesString = categories.map(cat => `[[Category:${cat}]]\n`).join('');
 
   const filename = `${iconId} Pinhead icon.svg`

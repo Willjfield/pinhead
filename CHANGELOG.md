@@ -32,10 +32,10 @@ Add campsite icons:
 - <img src="https://pinhead.ink/v11/campsite_with_euro.svg" width="15px"/> Add `campsite_with_euro` by [@quincylvania](https://github.com/quincylvania)
 - <img src="https://pinhead.ink/v11/campsite_with_canoe.svg" width="15px"/> Add `campsite_with_canoe` by [@quincylvania](https://github.com/quincylvania)
 - <img src="https://pinhead.ink/v11/campsites.svg" width="15px"/> Add `campsites` by [@quincylvania](https://github.com/quincylvania) ([#53](https://github.com/waysidemapping/pinhead/issues/53))
-- <img src="https://pinhead.ink/v11/campsite_tipi_style.svg" width="15px"/> Add `campsite_tipi_style` by [@quincylvania](https://github.com/quincylvania) ([#52](https://github.com/waysidemapping/pinhead/issues/52))
-- <img src="https://pinhead.ink/v11/campsite_tipi_style_with_dollar.svg" width="15px"/> Add `campsite_tipi_style_with_dollar` by [@quincylvania](https://github.com/quincylvania)
-- <img src="https://pinhead.ink/v11/campsite_tipi_style_with_euro.svg" width="15px"/> Add `campsite_tipi_style_with_euro` by [@quincylvania](https://github.com/quincylvania)
-- <img src="https://pinhead.ink/v11/campsites_tipi_style.svg" width="15px"/> Add `campsites_tipi_style` by [@quincylvania](https://github.com/quincylvania) ([#52](https://github.com/waysidemapping/pinhead/issues/52))
+- <img src="https://pinhead.ink/v11/tipi_campsite.svg" width="15px"/> Add `tipi_campsite` by [@quincylvania](https://github.com/quincylvania) ([#52](https://github.com/waysidemapping/pinhead/issues/52))
+- <img src="https://pinhead.ink/v11/tipi_campsite_with_dollar.svg" width="15px"/> Add `tipi_campsite_with_dollar` by [@quincylvania](https://github.com/quincylvania)
+- <img src="https://pinhead.ink/v11/tipi_campsite_with_euro.svg" width="15px"/> Add `tipi_campsite_with_euro` by [@quincylvania](https://github.com/quincylvania)
+- <img src="https://pinhead.ink/v11/tipi_campsites.svg" width="15px"/> Add `tipi_campsites` by [@quincylvania](https://github.com/quincylvania) ([#52](https://github.com/waysidemapping/pinhead/issues/52))
 
 Add tent icons:
 

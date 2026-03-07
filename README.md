@@ -31,6 +31,10 @@ Visit [pinhead.ink](https://pinhead.ink) to browse the icons. Each icon has a do
 
 If you want to get the full set of icon files, use the download link on pinhead.ink for the most recent version. Or, you can browse all version in the [releases](https://github.com/waysidemapping/pinhead/releases).
 
+### For Wikimedia editors
+
+All Pinhead icons are [synced to Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Plain_black_Pinhead_SVG_icons) for convenient integration with Wikipedia, Wikidata, and other such projects.
+
 ### For developers
 
 Node developers can install Pinhead as usual:

@@ -2055,6 +2055,7 @@
         "newId": "eyeglasses",
         "src": "maki",
         "importBy": "@quincylvania",
+        "char": "👓",
         "maki": "optician",
         "osmcarto": "shop/optician"
       },
@@ -2380,6 +2381,7 @@
         "newId": "giftwrapped_box",
         "src": "maki",
         "importBy": "@quincylvania",
+        "char": "🎁",
         "maki": "gift",
         "nps": "souvenir-shop",
         "osmcarto": "shop/gift"
@@ -2702,6 +2704,7 @@
         "newId": "horse_racer",
         "src": "maki",
         "importBy": "@quincylvania",
+        "char": "🏇",
         "maki": "racetrack-horse"
       },
       {
@@ -3800,6 +3803,7 @@
         "newId": "paperclip",
         "src": "osmcarto",
         "importBy": "@quincylvania",
+        "char": "📎",
         "osmcarto": "shop/stationery"
       },
       {
@@ -3924,6 +3928,7 @@
         "newId": "pedestrian_using_white_cane",
         "src": "nps",
         "importBy": "@quincylvania",
+        "char": "🧑‍🦯",
         "nps": "low-vision-access",
         "temaki": "blind"
       },
@@ -4999,6 +5004,7 @@
         "newId": "runner",
         "src": "maki",
         "importBy": "@quincylvania",
+        "char": "🏃‍➡️",
         "maki": "pitch",
         "osmcarto": [
           "leisure/fitness",
@@ -5888,6 +5894,7 @@
         "newId": "toilet_paper_roll",
         "src": "nps",
         "importBy": "@quincylvania",
+        "char": "🧻",
         "nps": "sewer-hookup"
       },
       {

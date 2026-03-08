@@ -222,6 +222,22 @@ function printTextForChangelog(changelog) {
     });
     console.log('');
   }
+  if (renamedAndRedesignedIcons.length) {
+    console.log('### Renamed and redesigned icons');
+    console.log('');
+    renamedAndRedesignedIcons.forEach(iconChange => {
+      console.log(`- <img src="https://pinhead.ink/v${oldV}/${iconChange.oldId}.svg" width="15px"/> \`${iconChange.oldId}\` -> <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.newId}\`` + issueLinks(iconChange));
+    });
+    console.log('');
+  }
+  if (renamedIcons.length) {
+    console.log('### Renamed icons');
+    console.log('');
+    renamedIcons.forEach(iconChange => {
+      console.log(`- <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.oldId}\` -> \`${iconChange.newId}\`` + issueLinks(iconChange));
+    });
+    console.log('');
+  }
   if (addedIcons.length) {
     console.log('### Added icons');
     console.log('');
@@ -235,27 +251,11 @@ function printTextForChangelog(changelog) {
     });
     console.log('');
   }
-  if (renamedAndRedesignedIcons.length) {
-    console.log('### Renamed and redesigned icons');
-    console.log('');
-    renamedAndRedesignedIcons.forEach(iconChange => {
-      console.log(`- <img src="https://pinhead.ink/v${oldV}/${iconChange.oldId}.svg" width="15px"/> \`${iconChange.oldId}\` -> <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.newId}\`` + issueLinks(iconChange));
-    });
-    console.log('');
-  }
   if (redesignedIcons.length) {
     console.log('### Redesigned icons');
     console.log('');
     redesignedIcons.forEach(iconChange => {
       console.log(`- <img src="https://pinhead.ink/v${oldV}/${iconChange.oldId}.svg" width="15px"/> -> <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.newId}\`` + issueLinks(iconChange));
-    });
-    console.log('');
-  }
-  if (renamedIcons.length) {
-    console.log('### Renamed icons');
-    console.log('');
-    renamedIcons.forEach(iconChange => {
-      console.log(`- <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.oldId}\` -> \`${iconChange.newId}\`` + issueLinks(iconChange));
     });
     console.log('');
   }

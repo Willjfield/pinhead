@@ -8747,6 +8747,31 @@
         "src": "nps",
         "importBy": "@quincylvania",
         "nps": "scenic-viewpoint"
+      },
+      {
+        "newId": "bullet_train",
+        "by": "@quincylvania",
+        "inspo": "bullet_train_on_railway_track"
+      },
+      {
+        "newId": "diesel_train",
+        "by": "@quincylvania",
+        "inspo": "diesel_train_on_railway_track"
+      },
+      {
+        "newId": "steam_train",
+        "by": "@quincylvania",
+        "inspo": "steam_train_on_railway_track"
+      },
+      {
+        "newId": "steam_train_with_tires",
+        "by": "@quincylvania",
+        "inspo": "steam_train_on_railway_track"
+      },
+      {
+        "newId": "kids_train_with_tires",
+        "by": "@quincylvania",
+        "inspo": "kids_train_on_railway_track"
       }
     ]
   }

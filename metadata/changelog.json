@@ -8769,9 +8769,29 @@
         "inspo": "steam_train_on_railway_track"
       },
       {
+        "newId": "kids_train",
+        "by": "@quincylvania",
+        "inspo": "kids_train_on_railway_track"
+      },
+      {
         "newId": "kids_train_with_tires",
         "by": "@quincylvania",
         "inspo": "kids_train_on_railway_track"
+      },
+      {
+        "newId": "arrow_down_from_up_bracket",
+        "by": "@quincylvania",
+        "inspo": "arrow_up_to_up_bracket"
+      },
+      {
+        "newId": "arrow_right_from_left_bracket",
+        "by": "@quincylvania",
+        "inspo": "arrow_left_to_left_bracket"
+      },
+      {
+        "newId": "arrow_left_from_right_bracket",
+        "by": "@quincylvania",
+        "inspo": "arrow_right_to_right_bracket"
       }
     ]
   }

@@ -7,7 +7,8 @@ import os from "os";
 
 const workspace = await fs.mkdtemp(join(os.tmpdir(), "workspace-"));
 
-const currentMajorVersion = JSON.parse(readFileSync('package.json')).version.split('.')[0];
+const version = JSON.parse(readFileSync('package.json')).version;
+const currentMajorVersion = version.split('.')[1];
 
 const importSources = JSON.parse(readFileSync('metadata/external_sources.json'));
 
@@ -193,7 +194,7 @@ function validateChangelog() {
 
 function printTextForChangelog(changelog) {
   const newV = changelog.majorVersion;
-  console.log(`## [${newV}.0.0] - ${changelog.date}`);
+  console.log(`## [${version}] - ${changelog.date}`);
   console.log('');
   const oldV = parseInt(newV) - 1;
   const addedIcons = [], deletedIcons = [], renamedIcons = [], redesignedIcons = [], renamedAndRedesignedIcons = [];

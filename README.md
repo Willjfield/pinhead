@@ -31,11 +31,19 @@ Visit [pinhead.ink](https://pinhead.ink) to browse the icons. Each icon has a do
 
 If you want to get the full set of icon files, use the download link on pinhead.ink for the most recent version. Or, you can browse all version in the [releases](https://github.com/waysidemapping/pinhead/releases).
 
+#### Verison numbers
+
+The Pinhead version number is just an integer that increments whenever an icon changes. This includes, adding, deleting, renaming, or making any visual modification to icons. The goal is total version integrity, where each Pinhead version number refers to a complete and static set of icons that that can exist in isolation. This way, two apps that are both using the same Pinhead version will always have the same icons.
+
 ### For Wikimedia editors
 
 All Pinhead icons are [synced to Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Plain_black_Pinhead_SVG_icons) for convenient integration with Wikipedia, Wikidata, the OpenStreetMap Wiki, and other such projects.
 
 ### For developers
+
+Pinhead is intended to be developer friendly.
+
+### Node.js
 
 Node developers can install Pinhead as usual:
 
@@ -43,18 +51,14 @@ Node developers can install Pinhead as usual:
 npm install @waysidemapping/pinhead
 ```
 
+This npm package uses a flavor of semantic versioning (major.minor.patch). As of v15, the Pinhead version number corresponds to the minor version of the package instead of the major version. If your app expects the icons to be static, depend on the package like (`~x.x.0`). If your app can automatically handle icons changes, perhaps by reading the `changelog.json` file, then depend on the package like (`^x.x.0`). We'll only increment the major version if there is a breaking change to the package format, in which case the minor version will NOT reset to zero but will remain the Pinhead version number.
+
 Pinhead has no dependencies and is basically just a directory of SVG files. A few convenience files are included:
 
 - `dist/icons/index.json`: a list of all the available icons in this version
 - `dist/icons/index.complete.json`: same as the above but with the SVG code included inline
 - `dist/changelog.json`: a machine-readable list of icon additions, deletions, and renames between major versions
 - `dist/external_sources.json`: a detailed list of the external icons sources referenced in changelog.json
-
-#### Version numbers
-
-Pinhead uses a flavor of semantic versioning, with major releases (v2.0.0) corresponding to breaking changes, minor releases (v2.1.0) corresponding to backwards-compatible changes, and patch releases (v2.1.1) corresponding to fixes.
-
-When it comes to icons: renaming or deleting an icon, or making any visual modification, is a breaking change. Perhaps counterintuitively, adding a new icon is also considered a breaking change. The goal is clear version integrity, where each major version number refers to a complete set of icons with no differences between minor versions. In effect, this means you can think of Pinhead v1 and Pinhead v2 as two static, independent icon sets. This avoids common gotchas, like developers depending on a package like `^1.0.0` and potentially seeing different lists of icons in development vs. production in the case where v1.1.0 adds an icon. 
 
 ## Where the icons are from
 

@@ -12,11 +12,11 @@ const localIconsById = new ChangelogReader(changelogs).iconsById;
 
 const currentVersion = JSON.parse(readFileSync('package.json')).version;
 const versionParts = currentVersion.split('.');
-const currentMajorVersion = versionParts[0];
+const currentMajorVersion = versionParts[1];
 
 const userAgent ="PinheadBot/1.0 (quincy@waysidemapping.org)";
 
-if (versionParts[1] !== '0' || versionParts[2] !== '0' ||
+if (versionParts[2] !== '0' ||
   currentVersion.includes('dev') ||
   Object.values(localIconsById).some(icon => parseInt(icon.v) > parseInt(currentVersion))) {
   console.log('Skipping commons upload for non-release, non-major version of Pinhead');

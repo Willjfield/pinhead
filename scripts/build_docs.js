@@ -6,7 +6,7 @@ const packageName = "@waysidemapping/pinhead";
 
 const version = execSync(`npm view ${packageName} version`, { encoding: "utf8" }).trim();
 console.log('Building docs for Pinhead v' + version);
-const currentMajorVersion = parseInt(version.split('.')[0]);
+const currentMajorVersion = parseInt(version.split('.')[1]);
 
 for (let i = 1; i <= currentMajorVersion; i+=1) {
   const targetDir = 'docs/v' + i;

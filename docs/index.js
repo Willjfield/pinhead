@@ -9,7 +9,7 @@ window.addEventListener('load', _ => {
     .then(obj => {
       packageJson = obj;
       version = packageJson.version;
-      majorVersion = version.split('.')[0];
+      majorVersion = version.split('.')[1];
       fetch(`v${majorVersion}/index.complete.json`)
         .then(result => result.json())
         .then(setupPage);
@@ -58,7 +58,7 @@ async function setupPage(pageData) {
               new Chainable('a')
                 .setAttribute('href', `https://github.com/waysidemapping/pinhead/releases/tag/v${version}`)
                 .setAttribute('target', '_blank')
-                .append('v' + version)
+                .append('v' + majorVersion)
             ),
           new Chainable('p')
             .setAttribute('class', 'date-line')

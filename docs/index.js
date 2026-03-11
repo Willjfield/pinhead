@@ -116,7 +116,7 @@ async function setupPage(pageData) {
             .append('coverage'),
           new Chainable('img')
             .setAttribute('class', 'inline-icon')
-            .setAttribute('src', `/v${majorVersion}/arrow_top_right_from_square_outline.svg`)
+            .setAttribute('src', `/v${majorVersion}/arrow_right_from_left_bracket.svg`)
         ),
       new Chainable('a')
         .setAttribute('href', `https://github.com/waysidemapping/pinhead/releases.atom`)

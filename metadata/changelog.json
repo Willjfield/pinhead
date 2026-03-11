@@ -8995,6 +8995,18 @@
         "issue": "70"
       },
       {
+        "newId": "winding_way_narrow",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "winding_way",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "winding_way_wide",
+        "by": "@quincylvania"
+      },
+      {
         "newId": "water_tap",
         "by": "@quincylvania"
       },

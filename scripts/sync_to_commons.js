@@ -8,7 +8,7 @@ if (existsSync(".env")) {
 import { ChangelogReader } from '../src/ChangelogReader.js';
 
 const changelogs = JSON.parse(readFileSync('dist/changelog.json'));
-const iconsById = new ChangelogReader(changelogs).iconsById;
+const localIconsById = new ChangelogReader(changelogs).iconsById;
 
 const currentVersion = JSON.parse(readFileSync('package.json')).version;
 const versionParts = currentVersion.split('.');
@@ -18,7 +18,7 @@ const userAgent ="PinheadBot/1.0 (quincy@waysidemapping.org)";
 
 if (versionParts[1] !== '0' || versionParts[2] !== '0' ||
   currentVersion.includes('dev') ||
-  Object.values(iconsById).some(icon => parseInt(icon.v) > parseInt(currentVersion))) {
+  Object.values(localIconsById).some(icon => parseInt(icon.v) > parseInt(currentVersion))) {
   console.log('Skipping commons upload for non-release, non-major version of Pinhead');
   process.exit(0);
 }
@@ -27,10 +27,33 @@ const commonsApiBase = "https://commons.wikimedia.org/w/api.php";
 const commonsCategory = "Category:Plain_black_Pinhead_SVG_icons";
 
 const externalSources = JSON.parse(readFileSync('dist/external_sources.json'));
+const completeIconsById =  JSON.parse(readFileSync('dist/icons/index.complete.json')).icons;
+const iconsToUploadById = Object.assign({}, completeIconsById);
 
-const iconsToUpload = JSON.parse(readFileSync('dist/icons/index.complete.json')).icons;
+const unmatchedPages = [];
+const pagesNeedingUpdateByIconId = {};
 
 const validRemotePages = {};
+
+const loginInfo = await login();
+
+await downloadCategoryPages()
+  .catch(console.error);
+
+await uploadNewIconVersions()
+  .catch(console.error);
+
+// don't upload new icons if one if them might be a duplicate
+if (!unmatchedPages.length) {
+  await uploadMissingIcons()
+    .catch(console.error);
+}
+
+await downloadEntityStatements()
+  .catch(console.error);
+
+await uploadEntityStatements()
+  .catch(console.error);
 
 async function login() {
   const tokenRes = await fetch(`${commonsApiBase}?action=query&meta=tokens&type=login&format=json`, {
@@ -117,22 +140,23 @@ async function downloadCategoryPages() {
         const pinheadIconId = results[1];
         const commonsIconV = parseInt(results[2]);
 
-        const iconInfo = iconsById[pinheadIconId];
-        if (!iconInfo) {
-          console.error(`Cannot find icon info for ${title}`);
-        } else {
-          const latestV = parseInt(iconsById[pinheadIconId].v);
+        const iconInfo = localIconsById[pinheadIconId];
+        if (iconInfo) {
+          const latestV = parseInt(localIconsById[pinheadIconId].v);
           if (commonsIconV < latestV) {
-             console.error(`Commons icon needs to be updated: ${title}`);
+            pagesNeedingUpdateByIconId[pinheadIconId] = page;
           } else {
             validRemotePages[page.pageid] = {
               pinheadIconId: pinheadIconId,
               filename: page.title.slice(5)
             };
           }
-          if (iconsToUpload[pinheadIconId]) {
-            delete iconsToUpload[pinheadIconId];
+          if (iconsToUploadById[pinheadIconId]) {
+            delete iconsToUploadById[pinheadIconId];
           }
+        } else {
+          unmatchedPages.push(page);
+          console.error(`Cannot find local icon info for ${title}`);
         }
       } else {
         console.error(`Cannot find valid {{Pinhead|}} template for ${title}`);
@@ -145,9 +169,8 @@ async function downloadCategoryPages() {
   console.log('Done downloading');
 }
 
-async function uploadFile(pinheadIconId, srcdir, svg, cookie, token) {
-  const icon = iconsById[pinheadIconId];
-  
+function commonsPageAuthorValue(pinheadIconId) {
+  const icon = localIconsById[pinheadIconId];
   let bys = (icon.by || []).concat(icon.srcBy || []);
   let bylines = bys
     .map(by => {
@@ -161,11 +184,25 @@ async function uploadFile(pinheadIconId, srcdir, svg, cookie, token) {
       return `[${source.repo.slice(0, -4)} ${source.name}] contributors`;
     })
   );
+  return [...new Set(bylines)].join(', ');
+}
+
+function commonsPageSourceValue(pinheadIconId) {
+  const srcdir = completeIconsById[pinheadIconId].srcdir;
+  return `https://github.com/waysidemapping/pinhead/blob/v${currentMajorVersion}.0.0/icons/${(srcdir ? srcdir + '/' : '') + pinheadIconId}.svg`;
+}
+
+function commonsPageCategoriesText(pinheadIconId) {
+
+  const icon = localIconsById[pinheadIconId];
+  let bys = (icon.by || []).concat(icon.srcBy || []);
 
   let categories = [];
   if (bys.includes('@quincylvania')) {
     categories.push('Pinhead icons by Quincy Morgan');
   }
+
+  const srcdir = completeIconsById[pinheadIconId].srcdir;
   const dirs = srcdir ? srcdir.split('/') : [];
 
   const catsForDir = {
@@ -206,21 +243,17 @@ async function uploadFile(pinheadIconId, srcdir, svg, cookie, token) {
     }
   }
   
-  const categoriesString = categories.map(cat => `[[Category:${cat}]]\n`).join('');
+  return categories.map(cat => `[[Category:${cat}]]\n`).join('');
+}
 
-  const filename = `${pinheadIconId} Pinhead icon.svg`
-
-  const form = new FormData();
-  form.append("action", "upload");
-  form.append("filename", filename);
-  form.append("file", new Blob([svg], { type: "image/svg+xml" }), filename);
-
-  form.append("text", `=={{int:filedesc}}==
+function textForNewFile(pinheadIconId) {
+  const icon = localIconsById[pinheadIconId];  
+  return `=={{int:filedesc}}==
 {{Information
 |description    = {{en|1=Plain black vector icon depicting "${pinheadIconId.replaceAll('_', ' ')}". Intended for display at 15x15 pixels or greater. Part of the [https://pinhead.ink Pinhead] map icon library.}}
 |date           = ${icon.ogDate}
-|source         = https://github.com/waysidemapping/pinhead/blob/v${currentMajorVersion}.0.0/icons/${(srcdir ? srcdir + '/' : '') + pinheadIconId}.svg
-|author         = ${bylines.join(', ')}
+|source         = ${commonsPageSourceValue(pinheadIconId)}
+|author         = ${commonsPageAuthorValue(pinheadIconId)}
 |permission     = 
 |other versions = 
 }}
@@ -229,42 +262,134 @@ async function uploadFile(pinheadIconId, srcdir, svg, cookie, token) {
 {{Pinhead|${pinheadIconId}|v=${icon.v}}}
 {{Cc-zero}}
 
-${categoriesString}`);
+${commonsPageCategoriesText(pinheadIconId)}`;
+}
 
-  form.append("comment", "Automated upload via Node.js");
-  form.append("token", token);
-  form.append("ignorewarnings", "0"); // don't overwrite
+async function uploadFile(filename, svg, newFileText) {
+
+  const isFirstVersion = !!newFileText;
+  
+  const form = new FormData();
+  form.append("action", "upload");
+  form.append("filename", filename);
+  form.append("file", new Blob([svg], { type: "image/svg+xml" }), filename);
+  if (isFirstVersion) form.append("text", newFileText);
+  const comment = (isFirstVersion ? 'Upload' : 'Upload latest version of') + ' Pinhead icon via Node.js';  
+  form.append("comment", comment);
+  form.append("token", loginInfo.token);
+  // intentionally enable overwriting files only if this is an update
+  form.append("ignorewarnings", isFirstVersion ? "0" : "1");
   form.append("format", "json");
 
   const res = await fetch(commonsApiBase, {
     method: "POST",
     body: form,
     headers: {
-      Cookie: cookie,
+      Cookie: loginInfo.cookie,
       "User-Agent": userAgent
     }
   });
-  const json = await res.json();
-  if (json.upload?.result === 'Success') {
-    validRemotePages[json.upload.pageid] = {
-      filename: json.upload.filename
-    };
-  } 
-  console.log(json.upload?.result + ': ' + json.upload?.imageinfo?.descriptionurl);
+  return await res.json();
 }
 
-async function uploadMissingIcons(loginInfo) {
+async function uploadMissingIcons() {
   console.log('Uploading icons...');
-  if (Object.keys(iconsToUpload).length) {
-    console.log(`Uploading ${Object.keys(iconsToUpload).length} icons to Wikimedia Commons`);
-    for (const id in iconsToUpload) {
-      await uploadFile(id, iconsToUpload[id].srcdir, iconsToUpload[id].svg, loginInfo.cookie, loginInfo.token);
+  if (Object.keys(iconsToUploadById).length) {
+    console.log(`Uploading ${Object.keys(iconsToUploadById).length} icons to Wikimedia Commons`);
+    for (const pinheadIconId in iconsToUploadById) {
+      const filename = `${pinheadIconId} Pinhead icon.svg`;
+      const text = textForNewFile(pinheadIconId);
+      const json = await uploadFile(filename, iconsToUploadById[pinheadIconId].svg, text);
+      if (json.upload?.result === 'Success') {
+        validRemotePages[json.upload.pageid] = {
+          pinheadIconId: pinheadIconId,
+          filename: json.upload.filename
+        };
+      }
+      console.log(json.upload?.result + ': ' + json.upload?.imageinfo?.descriptionurl);
     }
     console.log("Upload complete");
   } else {
     console.log("No icons to upload");
   }
   console.log("Done uploading");
+}
+
+function updatedFileText(text, pinheadIconId) {
+
+  const sourceRegex = /^((?:\r|\n|.)*\| *?source *?=\s*)((?:\r|\n|.)*?)((?:\n\||}})(?:\r|\n|.)*)$/;
+  const authorRegex = /^((?:\r|\n|.)*\| *?author *?=\s*)((?:\r|\n|.)*?)((?:\n\||}})(?:\r|\n|.)*)$/;
+  const versionRegex = /^((?:\r|\n|.)*{{Pinhead\|.*?\|v=\s*)((?:\r|\n|.)*?)((?:\||}})(?:\r|\n|.)*)$/;
+
+  const sourceText = commonsPageSourceValue(pinheadIconId);
+  const authorText = commonsPageAuthorValue(pinheadIconId);
+  if (sourceRegex.test(text)) {
+    text = text.replace(sourceRegex, `$1${sourceText}$3`);
+  } else {
+    return false;
+  }
+  if (authorRegex.test(text)) {
+    text = text.replace(authorRegex, `$1${authorText}$3`);
+  } else {
+    return false;
+  }
+  if (versionRegex.test(text)) {
+    text = text.replace(versionRegex, `$1${localIconsById[pinheadIconId].v}$3`);
+  } else {
+    return false;
+  }
+  return text;
+}
+async function uploadNewIconVersions() {
+  console.log('Uploading updated icons...');
+  for (const pinheadIconId in pagesNeedingUpdateByIconId) {
+    const page = pagesNeedingUpdateByIconId[pinheadIconId];
+    let content = page.revisions?.[0]?.slots?.main?.content;
+    content = updatedFileText(content, pinheadIconId);
+    if (content) {
+      const filename = page.title.slice(5);
+      const svg = completeIconsById[pinheadIconId].svg;
+      console.log(`Uploading updated version of file: ${filename}`);
+      const result = await uploadFile(filename, svg);
+      if (result.upload?.result === 'Success' || result.error?.code === 'fileexists-no-change') {
+        if (result.upload?.result === 'Success') {
+          console.log('Success');
+        } else {
+          console.log('File already up to date');
+        }
+        console.log(`Uploading updated version of page text for file: ${filename}...`);
+
+        validRemotePages[page.pageid] = {
+          pinheadIconId: pinheadIconId,
+          filename: filename
+        };
+        const params = new URLSearchParams({
+          action: "edit",
+          title: page.title,
+          text: content,
+          summary: "Update file description for Pinhead icon via Node.js",
+          token: loginInfo.token,
+          format: "json"
+        });
+        
+        const res = await fetch(commonsApiBase, {
+          method: "POST",
+          body: params,
+          headers: {
+            Cookie: loginInfo.cookie,
+            "User-Agent": userAgent
+          }
+        });
+        const result = await res.json();
+        console.log(result.edit?.result);
+      } else {
+        console.error(result);
+      }
+    } else {
+      console.error('Could not automatically update text description for: ' + pinheadIconId);
+    }
+  }
+  console.log('Done uploading')
 }
 
 async function downloadEntityStatements() {
@@ -312,7 +437,7 @@ async function downloadEntityStatements() {
   console.log('Done downloading');
 }
 
-async function uploadEntityStatements(loginInfo) {
+async function uploadEntityStatements() {
   console.log('Uploading entity statements...');
 
   const yearRegex = /^\d{4}-\d{2}-\d{2}$/;
@@ -338,7 +463,7 @@ async function uploadEntityStatements(loginInfo) {
       return;
     }
     const propsToUpload = Object.assign({}, defaultProps);
-    const pinheadIconInfo = iconsById[remotePage.pinheadIconId];
+    const pinheadIconInfo = localIconsById[remotePage.pinheadIconId];
     if (!pinheadIconInfo) {
       console.error('Missing Pinhead icon info for ' + remotePage.filename);
       return;
@@ -442,18 +567,3 @@ async function uploadEntityStatements(loginInfo) {
     return await res.json();
   }
 }
-
-const loginInfo = await login();
-
-await downloadCategoryPages()
-  .catch(console.error);
-
-await uploadMissingIcons(loginInfo)
-  .catch(console.error);
-
-await downloadEntityStatements()
-  .catch(console.error);
-
-await uploadEntityStatements(loginInfo)
-  .catch(console.error);
-

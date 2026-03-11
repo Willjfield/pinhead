@@ -43,7 +43,7 @@ All Pinhead icons are [synced to Wikimedia Commons](https://commons.wikimedia.or
 
 Pinhead is intended to be developer friendly.
 
-### Node.js
+#### Node.js
 
 Node developers can install Pinhead as usual:
 

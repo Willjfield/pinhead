@@ -3438,6 +3438,7 @@
         "src": "nps",
         "importBy": "@quincylvania",
         "char": "🔬",
+        "healthicons": "devices/microscope",
         "nps": "young-scientist-program"
       },
       {

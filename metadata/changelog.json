@@ -9555,6 +9555,16 @@
         "issue": "114"
       },
       {
+        "newId": "us_arizona",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_arizona_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "us_colorado",
         "by": "@quincylvania",
         "issue": "114"
@@ -9600,6 +9610,36 @@
         "issue": "114"
       },
       {
+        "newId": "us_kansas",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_kansas_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_massachusetts",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_massachusetts_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_nebraska",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_nebraska_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "us_nevada",
         "by": "@quincylvania",
         "issue": "114"
@@ -9620,12 +9660,12 @@
         "issue": "114"
       },
       {
-        "newId": "us_massachusetts",
+        "newId": "us_north_dakota",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
-        "newId": "us_massachusetts_with_capital_star",
+        "newId": "us_north_dakota_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },
@@ -9640,12 +9680,32 @@
         "issue": "114"
       },
       {
+        "newId": "us_oklahoma",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_oklahoma_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "us_pennsylvania",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "us_pennsylvania_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_south_dakota",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_south_dakota_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },

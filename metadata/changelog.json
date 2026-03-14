@@ -9629,6 +9629,11 @@
         "issue": "114"
       },
       {
+        "newId": "hawaii",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "idaho",
         "by": "@quincylvania",
         "issue": "114"
@@ -9759,6 +9764,16 @@
         "issue": "114"
       },
       {
+        "newId": "oregon",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "oregon_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "pennsylvania",
         "by": "@quincylvania",
         "issue": "114"
@@ -9805,6 +9820,16 @@
       },
       {
         "newId": "vermont_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "wisconsin",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "wisconsin_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },

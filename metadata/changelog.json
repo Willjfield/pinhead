@@ -9594,6 +9594,11 @@
         "issue": "114"
       },
       {
+        "newId": "us_district_of_columbia_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "us_idaho",
         "by": "@quincylvania",
         "issue": "114"
@@ -9654,6 +9659,16 @@
         "issue": "114"
       },
       {
+        "newId": "us_new_hampsire",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_new_hampsire_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "us_new_jersey",
         "by": "@quincylvania",
         "issue": "114"
@@ -9664,22 +9679,22 @@
         "issue": "114"
       },
       {
-        "newId": "us_north_dakota",
-        "by": "@quincylvania",
-        "issue": "114"
-      },
-      {
-        "newId": "us_north_dakota_with_capital_star",
-        "by": "@quincylvania",
-        "issue": "114"
-      },
-      {
         "newId": "us_new_mexico",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "us_new_mexico_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_north_dakota",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_north_dakota_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },
@@ -9730,6 +9745,16 @@
       },
       {
         "newId": "us_utah_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_vermont",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "us_vermont_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },

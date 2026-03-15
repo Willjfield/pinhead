@@ -9574,6 +9574,11 @@
         "issue": "114"
       },
       {
+        "newId": "alaska",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "arizona",
         "by": "@quincylvania",
         "issue": "114"
@@ -9714,12 +9719,37 @@
         "issue": "114"
       },
       {
+        "newId": "kentucky",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "kentucky_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "louisiana",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "louisiana_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "maine",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "maine_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "maryland",
         "by": "@quincylvania",
         "issue": "114"
       },
@@ -9864,6 +9894,16 @@
         "issue": "114"
       },
       {
+        "newId": "north_carolina",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "north_carolina_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "ohio",
         "by": "@quincylvania",
         "issue": "114"
@@ -9904,12 +9944,42 @@
         "issue": "114"
       },
       {
+        "newId": "rhode_island",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "rhode_island_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "south_dakota",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "south_dakota_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "south_carolina",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "south_carolina_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "tennessee",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "tennessee_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },
@@ -9944,12 +10014,32 @@
         "issue": "114"
       },
       {
+        "newId": "virginia",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "virginia_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "washington",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "washington_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "west_virginia",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "west_virginia_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },

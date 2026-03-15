@@ -9639,6 +9639,21 @@
         "issue": "114"
       },
       {
+        "newId": "florida",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "georgia_us",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "georgia_us_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "hawaii",
         "by": "@quincylvania",
         "issue": "114"
@@ -9664,12 +9679,42 @@
         "issue": "114"
       },
       {
+        "newId": "indiana",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "indiana_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "iowa",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "iowa_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "kansas",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "kansas_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "maine",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "maine_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },
@@ -9704,12 +9749,32 @@
         "issue": "114"
       },
       {
+        "newId": "minnesota",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "minnesota_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
         "newId": "mississippi",
         "by": "@quincylvania",
         "issue": "114"
       },
       {
         "newId": "mississippi_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "missouri",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "missouri_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },
@@ -9780,6 +9845,16 @@
       },
       {
         "newId": "north_dakota_with_capital_star",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "ohio",
+        "by": "@quincylvania",
+        "issue": "114"
+      },
+      {
+        "newId": "ohio_with_capital_star",
         "by": "@quincylvania",
         "issue": "114"
       },

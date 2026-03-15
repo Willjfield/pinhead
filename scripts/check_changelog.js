@@ -257,6 +257,17 @@ function printTextForChangelog(changelog) {
       if (iconChange.by || iconChange.srcBy) {
         const bys = (iconChange.by ? stringArray(iconChange.by) : []).concat(iconChange.srcBy ? stringArray(iconChange.srcBy) : []);
         str += ' by ' + bys.map(by => `[${by}](https://github.com/${by.slice(1)})`).join(', ');
+      } else if (iconChange.src && iconChange.importBy) {
+        const srcs = stringArray(iconChange.src);
+        str += ' from ' + srcs.map(src => {
+          const importSource = importSources.find(source => source.id === src);
+          if (importSource) {
+            return `[${importSource.name}](${importSource.repo.slice(0, -4)})`;
+          }
+          return `[source](${src})`;
+        }).join(', ');
+        const importBys = stringArray(iconChange.importBy);
+        str += ' imported by ' + importBys.map(by => `[${by}](https://github.com/${by.slice(1)})`).join(', ');
       }
       console.log(str + issueLinks(iconChange));
     });

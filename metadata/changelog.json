@@ -10207,6 +10207,60 @@
         "by": "@quincylvania",
         "inspo": "terminal_screen_with_hash_prompt",
         "char": "#"
+      },
+      {
+        "newId": "bicycle_and_dollar",
+        "by": "@quincylvania",
+        "inspo": [
+          "bicycle_and_tag",
+          "car_with_dollar"
+        ],
+        "issue": "91"
+      },
+      {
+        "newId": "bicycle_and_euro",
+        "by": "@quincylvania",
+        "inspo": [
+          "bicycle_and_tag",
+          "car_with_euro"
+        ],
+        "issue": "91"
+      },
+      {
+        "newId": "bicycle_and_pound",
+        "by": "@quincylvania",
+        "inspo": [
+          "bicycle_and_tag",
+          "car_with_pound"
+        ],
+        "issue": "91"
+      },
+      {
+        "newId": "cargobike_and_dollar",
+        "by": "@quincylvania",
+        "inspo": [
+          "cargobike",
+          "car_with_dollar"
+        ],
+        "issue": "91"
+      },
+      {
+        "newId": "cargobike_and_euro",
+        "by": "@quincylvania",
+        "inspo": [
+          "cargobike",
+          "car_with_euro"
+        ],
+        "issue": "91"
+      },
+      {
+        "newId": "cargobike_and_pound",
+        "by": "@quincylvania",
+        "inspo": [
+          "cargobike",
+          "car_with_pound"
+        ],
+        "issue": "91"
       }
     ]
   }

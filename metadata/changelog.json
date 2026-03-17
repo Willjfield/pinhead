@@ -10203,6 +10203,24 @@
         "pr": "125"
       },
       {
+        "oldId": "plane",
+        "newId": "plane_up",
+        "by": "@quincylvania",
+        "pr": "128"
+      },
+      {
+        "newId": "plane_top_right",
+        "by": "@quincylvania",
+        "pr": "128",
+        "char": "✈️"
+      },
+      {
+        "newId": "plane_right",
+        "by": "@quincylvania",
+        "pr": "128",
+        "char": "✈︎"
+      },
+      {
         "newId": "hash",
         "by": "@quincylvania",
         "inspo": "terminal_screen_with_hash_prompt",

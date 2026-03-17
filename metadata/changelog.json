@@ -10226,6 +10226,26 @@
         "char": "✈︎"
       },
       {
+        "newId": "stone_arrowhead_up",
+        "by": "@quincylvania",
+        "issue": "115"
+      },
+      {
+        "newId": "stone_arrowhead_top_right",
+        "by": "@quincylvania",
+        "issue": "115"
+      },
+      {
+        "newId": "stone_arrowhead_right",
+        "by": "@quincylvania",
+        "issue": "115"
+      },
+      {
+        "newId": "stone_arrowhead_down",
+        "by": "@quincylvania",
+        "issue": "115"
+      },
+      {
         "newId": "hash",
         "by": "@quincylvania",
         "inspo": "terminal_screen_with_hash_prompt",

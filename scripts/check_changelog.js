@@ -249,6 +249,14 @@ function printTextForChangelog(changelog) {
     });
     console.log('');
   }
+  if (redesignedIcons.length) {
+    console.log('### Redesigned icons');
+    console.log('');
+    redesignedIcons.forEach(iconChange => {
+      console.log(`- <img src="https://pinhead.ink/v${oldV}/${iconChange.oldId}.svg" width="15px"/> -> <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.newId}\`` + issueLinks(iconChange));
+    });
+    console.log('');
+  }
   if (addedIcons.length) {
     console.log('### Added icons');
     console.log('');
@@ -270,14 +278,6 @@ function printTextForChangelog(changelog) {
         str += ' imported by ' + importBys.map(by => `[${by}](https://github.com/${by.slice(1)})`).join(', ');
       }
       console.log(str + issueLinks(iconChange));
-    });
-    console.log('');
-  }
-  if (redesignedIcons.length) {
-    console.log('### Redesigned icons');
-    console.log('');
-    redesignedIcons.forEach(iconChange => {
-      console.log(`- <img src="https://pinhead.ink/v${oldV}/${iconChange.oldId}.svg" width="15px"/> -> <img src="https://pinhead.ink/v${newV}/${iconChange.newId}.svg" width="15px"/> \`${iconChange.newId}\`` + issueLinks(iconChange));
     });
     console.log('');
   }

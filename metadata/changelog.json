@@ -10605,6 +10605,11 @@
           "campsite",
           "wifi"
         ]
+      },
+      {
+        "newId":"turntable"
+        "by": "@ooosssay"
+        "pr":"#143"
       }
     ]
   },

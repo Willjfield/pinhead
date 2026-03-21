@@ -473,8 +473,7 @@
       },
       {
         "newId": "bench_with_backrest",
-        "by": "@quincylvania",
-        "temaki": "bench"
+        "by": "@quincylvania"
       },
       {
         "newId": "bench_with_backrest_in_rectangular_shelter",
@@ -11056,6 +11055,25 @@
         "srcBy": "@marensiegel",
         "importBy": "@quincylvania",
         "temaki": "zip_wire"
+      }
+    ]
+  },
+  {
+    "majorVersion": "19",
+    "date": "2026-03-21",
+    "iconChanges": [
+      {
+        "newId": "bench_with_armrests",
+        "by": "@quincylvania",
+        "inspo": "bench",
+        "issue": "148"
+      },
+      {
+        "newId": "bench_with_backrest_and_armrests",
+        "by": "@quincylvania",
+        "inspo": "bench_with_backrest",
+        "issue": "148",
+        "temaki": "bench"
       }
     ]
   }

@@ -11198,6 +11198,11 @@
         "issue": "79"
       },
       {
+        "newId": "ruble",
+        "by": "@quincylvania",
+        "issue": "80"
+      },
+      {
         "newId": "tag_with_dollar",
         "by": "@quincylvania",
         "inspo": "tag",
@@ -11220,13 +11225,28 @@
         "newId": "tag_with_yen_yuan",
         "by": "@quincylvania",
         "inspo": "tag",
-        "issue": "77"
+        "issue": [
+          "150",
+          "77"
+        ]
       },
       {
         "newId": "tag_with_rupee",
         "by": "@quincylvania",
         "inspo": "tag",
-        "issue": "79"
+        "issue": [
+          "150",
+          "79"
+        ]
+      },
+      {
+        "newId": "tag_with_ruble",
+        "by": "@quincylvania",
+        "inspo": "tag",
+        "issue": [
+          "150",
+          "80"
+        ]
       },
       {
         "oldId": "campsite_with_dollar",
@@ -11253,6 +11273,12 @@
         "issue": "79"
       },
       {
+        "newId": "campsite_with_ruble",
+        "by": "@quincylvania",
+        "inspo": "campsite_with_dollar",
+        "issue": "80"
+      },
+      {
         "oldId": "tipi_campsite_with_dollar",
         "newId": "tipi_campsite_with_dollar",
         "by": "@westnordost",
@@ -11275,6 +11301,12 @@
         "by": "@quincylvania",
         "inspo": "tipi_campsite_with_dollar",
         "issue": "79"
+      },
+      {
+        "newId": "tipi_campsite_with_ruble",
+        "by": "@quincylvania",
+        "inspo": "tipi_campsite_with_dollar",
+        "issue": "80"
       },
       {
         "oldId": "bicycle_and_dollar",
@@ -11301,6 +11333,12 @@
         "issue": "79"
       },
       {
+        "newId": "bicycle_and_ruble",
+        "by": "@quincylvania",
+        "inspo": "bicycle_and_dollar",
+        "issue": "80"
+      },
+      {
         "oldId": "cargobike_and_dollar",
         "newId": "cargobike_and_dollar",
         "by": "@westnordost",
@@ -11323,6 +11361,12 @@
         "by": "@quincylvania",
         "inspo": "cargobike_and_dollar",
         "issue": "79"
+      },
+      {
+        "newId": "cargobike_and_ruble",
+        "by": "@quincylvania",
+        "inspo": "cargobike_and_dollar",
+        "issue": "80"
       },
       {
         "oldId": "car_with_dollar",
@@ -11349,6 +11393,12 @@
         "issue": "79"
       },
       {
+        "newId": "car_with_ruble",
+        "by": "@quincylvania",
+        "inspo": "car_with_dollar",
+        "issue": "80"
+      },
+      {
         "newId": "person_using_terminal_kiosk_with_euro",
         "by": "@quincylvania",
         "inspo": "person_using_terminal_kiosk_with_dollar"
@@ -11364,6 +11414,12 @@
         "by": "@quincylvania",
         "inspo": "person_using_terminal_kiosk_with_dollar",
         "issue": "79"
+      },
+      {
+        "newId": "person_using_terminal_kiosk_with_ruble",
+        "by": "@quincylvania",
+        "inspo": "person_using_terminal_kiosk_with_dollar",
+        "issue": "80"
       },
       {
         "newId": "person_using_terminal_kiosk_with_pound",
@@ -11401,6 +11457,12 @@
         "by": "@quincylvania",
         "inspo": "milk_carton_and_apple_and_euro",
         "issue": "79"
+      },
+      {
+        "newId": "milk_carton_and_apple_and_ruble",
+        "by": "@quincylvania",
+        "inspo": "milk_carton_and_apple_and_euro",
+        "issue": "80"
       },
       {
         "oldId": "noodle_bowl_and_chopsticks_with_noodles",

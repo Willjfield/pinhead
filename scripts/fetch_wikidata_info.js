@@ -54,7 +54,8 @@ const wikidataData = await fetchWikidataEntities(allUniqueEntities, ['P13786', '
 const translationsByLang = {};
 
 for (const entity of entities) {
-  const pinheadId = pinheadIdByPageId[entity.pageid];
+  const pageid = entity.id.slice(1);
+  const pinheadId = pinheadIdByPageId[pageid];
   for (const attr in properties) {
     for (const prop of properties[attr]) {
       if (entity.statements && entity.statements[prop]) {

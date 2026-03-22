@@ -45,7 +45,7 @@ const entities = await downloadEntityStatements(Object.keys(validRemotePages))
   .catch(console.error);
 
 for (const item of entities) {
-  const pageid = item.pageid;
+  const pageid = item.id.slice(1);
   const page = validRemotePages[pageid];
   if (page) {
     // statements will be undefined if none have been added yet

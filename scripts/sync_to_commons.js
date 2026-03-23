@@ -288,20 +288,6 @@ async function uploadEntityStatements() {
   console.log('Uploading entity statements...');
 
   const yearRegex = /^\d{4}-\d{2}-\d{2}$/;
-
-  const defaultProps = {
-    P31: 'Q52827',          // instance of        = pictogram
-    P7482: 'Q138577495',    // source of file     = Pinhead
-    P1163: 'image/svg+xml', // media type
-    P2061: 'Q20970430',     // aspect ratio (W:H) = 1:1
-    P275: 'Q6938433',       // copyright license  = Creative Commons CC0 License
-    P6216: 'Q88088423',     // copyright status   = copyrighted, dedicated to the public domain by copyright holder
-    P462: 'Q23445',         // color              = black
-  };
-  const dependentPropsBySupportingProp = {
-    // only add copyright license if we're also adding copyright status
-    P6216: 'P275'
-  };
   
   for (const pageid in validRemotePages) {
     const remotePage = validRemotePages[pageid];
@@ -309,11 +295,57 @@ async function uploadEntityStatements() {
       console.error('Missing statements for ' + remotePage.filename);
       return;
     }
-    const propsToUpload = Object.assign({}, defaultProps);
+
+    const propsToUpload = getPropsToUpload(remotePage);
+
+    if (propsToUpload && Object.keys(propsToUpload).length) {
+      const claims = claimsForProps(propsToUpload);
+      console.log('Uploading props for ' + remotePage.filename + ': ' + claims.map(claim => claim.mainsnak.property));
+      const data = await uploadClaims(pageid, claims);
+      if (data.success !== 1) {
+        console.log(data);
+      } else {
+        console.log('success: ' + data.success);
+      }
+    }
+  }
+  console.log('Done uploading');
+
+  function getPropsToUpload(remotePage) {
+
+    const defaultProps = {
+      P31: 'Q52827',          // instance of        = pictogram
+      P7482: 'Q138577495',    // source of file     = Pinhead
+      P1163: 'image/svg+xml', // media type
+      P2061: 'Q20970430',     // aspect ratio (W:H) = 1:1
+      P275: 'Q6938433',       // copyright license  = Creative Commons CC0 License
+      P6216: 'Q88088423',     // copyright status   = copyrighted, dedicated to the public domain by copyright holder
+      P462: 'Q23445',         // color              = black
+    };
+    const dependentPropsBySupportingProp = {
+      // only add copyright license if we're also adding copyright status
+      P6216: 'P275'
+    };
+    const propsForDir = {
+      pixel_style: {
+        P136: 'Q811179'        // genre = pixel art
+      }
+    };
+       
     const pinheadIconInfo = localIconsById[remotePage.pinheadIconId];
     if (!pinheadIconInfo) {
       console.error('Missing Pinhead icon info for ' + remotePage.filename);
       return;
+    }
+    const propsToUpload = Object.assign({}, defaultProps);
+    const srcdir = completeIconsById[remotePage.pinheadIconId].srcdir;
+    if (srcdir) {
+      for (const dirPrefix in propsForDir) {
+        if (srcdir.startsWith(dirPrefix)) {
+          Object.assign(propsToUpload, propsForDir[dirPrefix])
+          break;
+        }
+      }
     }
 
     // inception = date
@@ -331,18 +363,8 @@ async function uploadEntityStatements() {
         }
       }
     }
-    if (Object.keys(propsToUpload).length) {
-      const claims = claimsForProps(propsToUpload);
-      console.log('Uploading props for ' + remotePage.filename + ': ' + claims.map(claim => claim.mainsnak.property));
-      const data = await uploadClaims(pageid, claims);
-      if (data.success !== 1) {
-        console.log(data);
-      } else {
-        console.log('success: ' + data.success);
-      }
-    }
+    return propsToUpload;
   }
-  console.log('Done uploading');
 
   function claimsForProps(props) {
     const claims = [];

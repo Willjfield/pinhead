@@ -11627,6 +11627,11 @@
         "importBy": "@quincylvania",
         "issue": "141",
         "opengemeenten": "l10n/DE/Paspoort"
+      },
+      {
+        "newId": "graticule_globe",
+        "by": "@quincylvania",
+        "char": "🌐"
       }
     ]
   }

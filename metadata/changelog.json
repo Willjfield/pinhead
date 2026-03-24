@@ -11632,6 +11632,12 @@
         "newId": "graticule_globe",
         "by": "@quincylvania",
         "char": "🌐"
+      },
+      {
+        "oldId": "shopping_bag",
+        "newId": "shopping_bag",
+        "by": "@quincylvania",
+        "inspo": "shopping_bag_with_heart"
       }
     ]
   }

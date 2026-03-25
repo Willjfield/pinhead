@@ -11839,12 +11839,39 @@
         "issue": "73"
       },
       {
-        "newId": "pixel_car",
-        "by": "@quincylvania"
+        "newId": "pixel_droplet",
+        "by": "@quincylvania",
+        "inspo": "droplet"
+      },
+      {
+        "newId": "pixel_droplet_with_shine",
+        "by": "@quincylvania",
+        "inspo": "droplet"
       },
       {
         "newId": "pixel_bicycle",
-        "by": "@quincylvania"
+        "by": "@quincylvania",
+        "inspo": "bicycle"
+      },
+      {
+        "newId": "pixel_car",
+        "by": "@quincylvania",
+        "inspo": "car"
+      },
+      {
+        "newId": "pixel_taxi",
+        "by": "@quincylvania",
+        "inspo": "taxi"
+      },
+      {
+        "newId": "pixel_bus",
+        "by": "@quincylvania",
+        "inspo": "bus"
+      },
+      {
+        "newId": "pixel_transit_vehicle_on_railway_track",
+        "by": "@quincylvania",
+        "inspo": "transit_vehicle_on_railway_track"
       }
     ]
   }

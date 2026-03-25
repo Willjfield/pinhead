@@ -11829,6 +11829,16 @@
         "pr": "163"
       },
       {
+        "newId": "spiral_labyrinth",
+        "by": "@quincylvania",
+        "issue": "73"
+      },
+      {
+        "newId": "circular_labyrinth",
+        "by": "@quincylvania",
+        "issue": "73"
+      },
+      {
         "newId": "pixel_car",
         "by": "@quincylvania"
       },

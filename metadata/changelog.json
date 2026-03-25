@@ -11743,6 +11743,53 @@
         "issue": "156"
       },
       {
+        "newId": "star_of_david_with_dot",
+        "by": "@quincylvania",
+        "inspo": "star_of_david",
+        "char": "🔯"
+      },
+      {
+        "oldId": "latin_cross",
+        "newId": "latin_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "nordic_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "petrine_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "saint_georges_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "patriarchal_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "papal_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "russian_orthodox_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "russian_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "celtic_cross",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "greek_orthodox_cross",
+        "by": "@quincylvania"
+      },
+      {
         "newId": "swastika",
         "by": "@ooosssay",
         "pr": "163"

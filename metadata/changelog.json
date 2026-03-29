@@ -11938,6 +11938,10 @@
     "date": "2026-03-29",
     "iconChanges": [
       {
+        "newId": "drink_can",
+        "by": "@quincylvania"
+      },
+      {
         "newId": "vending_machine",
         "by": "@quincylvania",
         "nps": "vending-machine"

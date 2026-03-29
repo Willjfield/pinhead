@@ -12071,6 +12071,52 @@
         "issue": "177"
       },
       {
+        "oldId": "book",
+        "newId": "book",
+        "by": "@quincylvania"
+      },
+      {
+        "newId": "book_with_bookmark",
+        "by": "@quincylvania",
+        "inspo": "book"
+      },
+      {
+        "newId": "book_with_bookmark_in_slot",
+        "by": [
+          "@ooosssay",
+          "@quincylvania"
+        ],
+        "inspo": [
+          "book_with_bookmark",
+          "slot"
+        ],
+        "pr": "172"
+      },
+      {
+        "newId": "arrow_down_from_book_with_bookmark_in_slot",
+        "by": [
+          "@ooosssay",
+          "@quincylvania"
+        ],
+        "inspo": [
+          "book_with_bookmark_in_slot",
+          "arrow_down"
+        ],
+        "pr": "172"
+      },
+      {
+        "newId": "arrow_up_to_book_with_bookmark_in_slot",
+        "by": [
+          "@ooosssay",
+          "@quincylvania"
+        ],
+        "inspo": [
+          "book_with_bookmark_in_slot",
+          "arrow_up"
+        ],
+        "pr": "172"
+      },
+      {
         "newId": "vending_machine",
         "by": "@quincylvania",
         "nps": "vending-machine"

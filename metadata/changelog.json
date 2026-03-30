@@ -2991,9 +2991,8 @@
       },
       {
         "newId": "jp_college",
-        "src": "maki",
-        "importBy": "@quincylvania",
-        "maki": "college-JP"
+        "src": "https://raw.githubusercontent.com/mapbox/maki/96e8b4c5941d687ddf0fde527ad54dde5559eef2/icons/college-JP.svg",
+        "importBy": "@quincylvania"
       },
       {
         "newId": "jp_ferry",
@@ -3053,7 +3052,10 @@
         "newId": "jp_school",
         "src": "maki",
         "importBy": "@quincylvania",
-        "maki": "school-JP"
+        "maki": [
+          "school-JP",
+          "college-JP"
+        ]
       },
       {
         "newId": "jug_and_apple",

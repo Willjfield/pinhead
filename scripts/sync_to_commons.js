@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 
-import { downloadCategoryPages, uploadFile, uploadNewFileDescription, downloadEntityStatements, uploadClaims } from "../src/CommonsConnection.js";
+import { downloadCategoryPages, uploadFile, uploadNewFileDescription, downloadEntityStatements, uploadClaims, moveFile } from "../src/CommonsConnection.js";
 import { ChangelogReader } from '../src/ChangelogReader.js';
 
 const changelogs = JSON.parse(readFileSync('dist/changelog.json'));
@@ -28,21 +28,26 @@ const pagesNeedingUpdateByIconId = {};
 
 const validRemotePages = {};
 
+const iconsToMoveByOldId = {};
+
 const pages = await downloadCategoryPages("Category:Plain_black_Pinhead_SVG_icons")
-  .catch(console.error);
+  .catch(catchError);
 
 for (const page of pages) {
   processCategoryPage(page);
 }
 
+await moveRenamedIcons()
+  .catch(catchError);
+
 await uploadNewIconVersions()
-  .catch(console.error);
+  .catch(catchError);
 
 await uploadMissingIcons()
-  .catch(console.error);
+  .catch(catchError);
 
 const entities = await downloadEntityStatements(Object.keys(validRemotePages))
-  .catch(console.error);
+  .catch(catchError);
 
 for (const item of entities) {
   const pageid = item.id.slice(1);
@@ -58,7 +63,12 @@ for (const item of entities) {
 }
 
 await uploadEntityStatements()
-  .catch(console.error);
+  .catch(catchError);
+
+function catchError(error) {
+  console.error(error);
+  process.exit(1);
+}
 
 function processCategoryPage(page) {
   const title = page.title;
@@ -89,16 +99,40 @@ function processCategoryPage(page) {
         console.error(`Cannot find local icon info for Commmons page ${title} with icon id ${pinheadIconId} from version ${commonsIconV}`);
       }
     } else {
-      console.log(`Icon renamed and needs to be manually moved on Commons: ${pinheadIconId} -> ${targetId}`);
-      if (iconsToUploadById[pinheadIconId]) {
-        delete iconsToUploadById[pinheadIconId];
-      }
+      console.log(`Icon was renamed. Will attempt to move on Commons: ${pinheadIconId} -> ${targetId}`);
+      iconsToMoveByOldId[pinheadIconId] = {
+        targetId: targetId,
+        page: page
+      };
+      // Remove target to avoid uploading duplicate icon
       if (iconsToUploadById[targetId]) {
         delete iconsToUploadById[targetId];
       }
     }
   } else {
     console.error(`Cannot find valid {{Pinhead|}} template for ${title}`);
+  }
+}
+
+async function moveRenamedIcons() {
+  for (const oldId in iconsToMoveByOldId) {
+    const page = iconsToMoveByOldId[oldId].page;
+    const oldFilename = page.title.slice(5);
+    const targetId = iconsToMoveByOldId[oldId].targetId;
+    const newFilename = `${targetId} Pinhead icon.svg`;
+   
+    // Don't leave a redirect page if we're going to upload another icon with the same name
+    const noRedirect = !!iconsToUploadById[oldId];
+
+    let reason = 'Fix name of file originally uploaded by me.';
+    if (noRedirect) {
+      reason += ' Leaving no redirect to make way for corrected file of this name.';
+    }
+    const result = await moveFile(oldFilename, newFilename, reason, noRedirect);
+    console.log(result);
+    page.title = 'File:' + newFilename.replaceAll('_', ' ');
+    // Always update page even if file is the same since the page text needs to be updated
+    pagesNeedingUpdateByIconId[targetId] = page;
   }
 }
 
@@ -201,7 +235,7 @@ function commonsPageCategoriesText(pinheadIconId) {
 }
 
 function textForNewFile(pinheadIconId) {
-  const icon = localIconsById[pinheadIconId];  
+  const icon = localIconsById[pinheadIconId];
   return `=={{int:filedesc}}==
 {{Information
 |description    = {{en|1=Plain black vector icon depicting "${pinheadIconId.replaceAll('_', ' ')}". Intended for display at 15x15 pixels or greater. Part of the [https://pinhead.ink Pinhead] map icon library.}}
@@ -247,7 +281,7 @@ function updatedFileText(text, pinheadIconId) {
 
   const sourceRegex = /^((?:\r|\n|.)*\| *?source *?=\s*)((?:\r|\n|.)*?)((?:\n\||}})(?:\r|\n|.)*)$/;
   const authorRegex = /^((?:\r|\n|.)*\| *?author *?=\s*)((?:\r|\n|.)*?)((?:\n\||}})(?:\r|\n|.)*)$/;
-  const versionRegex = /^((?:\r|\n|.)*{{Pinhead\|.*?\|v=\s*)((?:\r|\n|.)*?)((?:\||}})(?:\r|\n|.)*)$/;
+  const versionRegex = /^((?:\r|\n|.)*{{Pinhead\|)(.*?)(\|v=\s*)((?:\r|\n|.)*?)((?:\||}})(?:\r|\n|.)*)$/;
 
   const sourceText = commonsPageSourceValue(pinheadIconId);
   const authorText = commonsPageAuthorValue(pinheadIconId);
@@ -262,7 +296,7 @@ function updatedFileText(text, pinheadIconId) {
     return false;
   }
   if (versionRegex.test(text)) {
-    text = text.replace(versionRegex, `$1${localIconsById[pinheadIconId].v}$3`);
+    text = text.replace(versionRegex, `$1${pinheadIconId}$3${localIconsById[pinheadIconId].v}$5`);
   } else {
     return false;
   }

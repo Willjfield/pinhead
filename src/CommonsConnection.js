@@ -151,6 +151,30 @@ export async function uploadNewFileDescription(title, content) {
   return result;
 }
 
+export async function moveFile(fromName, toName, reason, noRedirect) {
+  console.log(`Moving page "File:${fromName}" to  "File:${toName}"...`);
+  const loginInfo = await getLoginInfo();
+  const params = {
+    action: "move",
+    from: 'File:' + fromName, 
+    to: 'File:' + toName,
+    reason: reason,
+    movetalk: 1,
+    noredirect: noRedirect ? 1 : 0,
+    token: loginInfo.token,
+    format: "json"
+  };
+  const res = await fetch(commonsApiBase, {
+    method: "POST",
+    body: new URLSearchParams(params),
+    headers: {
+      Cookie: loginInfo.cookie,
+      "User-Agent": userAgent
+    }
+  });
+  return await res.json();
+}
+
 export async function downloadEntityStatements(ids) {
   console.log('Downloading entity statements...');
   const maxIdsPerQuery = 50;

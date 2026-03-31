@@ -12427,6 +12427,18 @@
         "newId": "calculator",
         "by": "@westnordost",
         "pr": "183"
+      },
+      {
+        "newId": "triangles_up_down_in_rectangle_outline",
+        "by": "@quincylvania",
+        "inspo": "triangles_up_down_in_rectangle",
+        "issue": "#40",
+        "osmic": "transport/elevator"
+      },
+      {
+        "newId": "triangles_left_right_in_rectangle_outline",
+        "by": "@quincylvania",
+        "inspo": "triangles_left_right_in_rectangle"
       }
     ]
   }

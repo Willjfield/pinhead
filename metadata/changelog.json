@@ -12529,6 +12529,15 @@
         "pr": "185"
       },
       {
+        "newId": "trophy",
+        "by": [
+          "@ooosssay",
+          "@quincylvania"
+        ],
+        "inspo": "trophy_with_star",
+        "pr": "185"
+      },
+      {
         "newId": "trophy_with_star",
         "by": "@ooosssay",
         "inspo": "star",

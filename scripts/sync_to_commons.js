@@ -176,7 +176,7 @@ function commonsPageCategoriesText(pinheadIconId) {
     'abstract_symbols/japanese_map_symbols': ['SVG map symbols of Japan'],
     'abstract_symbols/text/letters': ['Single letter icons'],
     'abstract_symbols/text/multi_letter': ['SVG text icons'],
-    'abstract_symbols/text/numbers': ['Number icons'],
+    'abstract_symbols/text/numbers': ['Number icons', 'Plain black SVG numbers'],
     'animals/birds': ['Plain black SVG bird icons'],
     'animals/dogs': ['Plain black SVG dog icons'],
     'animals/fish': ['Plain black SVG fish icons'],

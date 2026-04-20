@@ -34,6 +34,47 @@ function titleFromPath(svgPath) {
   return toTitleCase(nameWithoutExtension.replaceAll('_', ' '));
 }
 
+/** Basename without `.svg`, lowercased (keeps underscores). */
+function titleIdFromPath(svgPath) {
+  const base = basename(svgPath);
+  const ext = extname(base);
+  const stem = ext.toLowerCase() === '.svg' ? base.slice(0, -ext.length) : base;
+  return stem.toLowerCase();
+}
+
+function escapeAttrValue(value) {
+  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+function ensureAriaDescribedByOnSvgOpenTag(svgOpenTag, titleId) {
+  const escaped = escapeAttrValue(titleId);
+  if (/\baria-describedby\s*=/i.test(svgOpenTag)) {
+    return svgOpenTag.replace(
+      /\baria-describedby\s*=\s*(["'])[^"']*\1/i,
+      `aria-describedby="${escaped}"`
+    );
+  }
+  const trimmed = svgOpenTag.trimEnd();
+  if (!trimmed.endsWith('>')) {
+    return svgOpenTag;
+  }
+  return `${trimmed.slice(0, -1)} aria-describedby="${escaped}">`;
+}
+
+function ariaDescribedByOnSvgOpenTag(svgOpenTag) {
+  const match = svgOpenTag.match(/\baria-describedby\s*=\s*(["'])([^"']*)\1/i);
+  return match ? match[2] : null;
+}
+
+function titleIdOnLeadingTitleOpen(afterOpenTag) {
+  const match = afterOpenTag.match(/^\s*<title\b([^>]*)>/i);
+  if (!match) {
+    return null;
+  }
+  const idMatch = match[1].match(/\bid\s*=\s*(["'])([^"']*)\1/i);
+  return idMatch ? idMatch[2] : null;
+}
+
 function detectIndentation(svgContent) {
   const indentedLine = svgContent.match(/\r?\n([ \t]+)</);
   return indentedLine ? indentedLine[1] : '  ';
@@ -49,7 +90,7 @@ function stripAllLeadingTitles(afterSvgOpen) {
   return rest;
 }
 
-function upsertSvgTitle(svgContent, titleText) {
+function upsertSvgTitle(svgContent, titleText, titleId) {
   const svgOpenTagMatch = svgContent.match(/<svg\b[^>]*>/i);
   if (!svgOpenTagMatch) {
     return { updated: svgContent, changed: false };
@@ -64,7 +105,14 @@ function upsertSvgTitle(svgContent, titleText) {
     const inner = firstTitleMatch[1].trim();
     const afterFirstTitle = afterOpenTag.slice(firstTitleMatch[0].length);
     const hasSecondLeadingTitle = /^\s*<title\b/i.test(afterFirstTitle);
-    if (inner === titleText && !hasSecondLeadingTitle) {
+    const existingTitleId = titleIdOnLeadingTitleOpen(afterOpenTag);
+    const existingAria = ariaDescribedByOnSvgOpenTag(svgOpenTag);
+    if (
+      inner === titleText &&
+      !hasSecondLeadingTitle &&
+      existingTitleId === titleId &&
+      existingAria === titleId
+    ) {
       return { updated: svgContent, changed: false };
     }
   }
@@ -74,8 +122,13 @@ function upsertSvgTitle(svgContent, titleText) {
   const indent = detectIndentation(svgContent);
   const needsTrailingNewline = sanitizedAfterOpenTag.length > 0 && !sanitizedAfterOpenTag.startsWith('\n');
   const trailingNewline = needsTrailingNewline ? '\n' : '';
-  const titleNode = `\n${indent}<title>${titleText}</title>${trailingNewline}`;
-  const updated = svgContent.replace(svgOpenTag + afterOpenTag, `${svgOpenTag}${titleNode}${sanitizedAfterOpenTag}`);
+  const idAttr = escapeAttrValue(titleId);
+  const titleNode = `\n${indent}<title id="${idAttr}">${titleText}</title>${trailingNewline}`;
+  const svgOpenTagWithAria = ensureAriaDescribedByOnSvgOpenTag(svgOpenTag, titleId);
+  const updated = svgContent.replace(
+    svgOpenTag + afterOpenTag,
+    `${svgOpenTagWithAria}${titleNode}${sanitizedAfterOpenTag}`
+  );
 
   return { updated, changed: updated !== svgContent };
 }
@@ -87,7 +140,8 @@ function addTitlesToSvgDirectory(rootDir) {
   for (const svgPath of svgPaths) {
     const svgContent = readFileSync(svgPath, 'utf8');
     const titleText = titleFromPath(svgPath);
-    const { updated, changed } = upsertSvgTitle(svgContent, titleText);
+    const titleId = titleIdFromPath(svgPath);
+    const { updated, changed } = upsertSvgTitle(svgContent, titleText, titleId);
 
     if (!changed) {
       continue;
@@ -107,5 +161,6 @@ export {
   addTitlesToSvgDirectory,
   collectSvgFiles,
   titleFromPath,
+  titleIdFromPath,
   upsertSvgTitle
 };
